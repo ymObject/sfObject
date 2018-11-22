@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        div{
+            margin: 0 auto;
+            background: #ccc;
+            color: #fff;
+            font-size: 24px;
+            width: 150px;
+            padding: 20px;
+            text-align: center;
+
+        }
+        div:first-of-type{
+            text-shadow: -2px -2px 5px red;
+        }
+        div:nth-of-type(2){
+            text-shadow: 0 0 20px #fff;
+        }
+        div:nth-of-type(3){
+            text-shadow: 0 0 20px red,0 0 10px #fff;
+        }
+        div:nth-of-type(4){
+            color: black;  
+            text-shadow: 0 1px 0 #fff;
+        }
+        div:last-of-type{
+            text-shadow: -1px -1px 0 #fff, -2px -2px 0 #fff, -3px -3px 0 #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo1">根网科技</div>
+    <div class="demo2">根网科技</div>
+    <div class="demo3">根网科技</div>
+    <div class="demo4">根网科技</div>
+    <div class="demo5">根网科技</div>
+    <div></div>
+</body>
+</html>

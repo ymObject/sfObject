@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        div.div1{
+            border: 1px solid red;
+        }
+        p{
+            background: yellow;
+            width: 100%;
+        }
+        div.div2{
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1" id="div1">
+        <p class="drag2" id="drag2" draggable=true>拖拽区域</span>
+    </div>
+    <div class="div2" id="div2"></div>
+</body>
+<script>
+    //被拖拽元素
+    document.ondragstart = function(e){
+        console.log('ondragstart');
+        e.dataTransfer.setData('text/html',e.target.id);
+    }
+    document.ondrag = function (e){//阻止默认事件
+        // console.log({'ondrag':e});
+    }
+    document.ondragend = function(){
+        console.log('ondragend');
+    }
+    document.ondragleave = function(){
+        console.log('ondragleave');
+    }
+
+    //目标元素
+    document.ondragenter = function(){
+        console.log('ondragenter');
+    }
+    document.ondragover = function(e){
+        e.preventDefault();
+    }
+    document.ondrop = function(e){
+        let id = e.dataTransfer.getData('text/html');
+        console.log(id);
+        e.target.appendChild(document.getElementById(id));
+    }
+</script>
+</html>
