@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .demo{
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            /*transition: transform 2s linear 10s;!*控制的属性需要有具体的px值或者具体值的一个变化*!*/
+            transition: transform 2s;/*控制的属性需要有具体的px值或者具体值的一个变化*/
+            background: red;
+            transform-origin: bottom right;/*控制transform一系列动作的原点*/
+        }
+        /*.demo:hover{*/
+            /*margin: 10px 0 10px 500px;*/
+        /*}*/
+        .demo:nth-of-type(2):active{
+            /*transform:translate(1000px,100px);!*括号中参数  第一个参数为x轴移动距离，第二个参数为y轴距离（正数为正坐标轴方向，负数为坐标轴反方向）*!*/
+            /*transform:rotate(-60deg);!*括号中参数为以z轴为主轴旋转角度 正数为顺时针方向 负数为逆时针方向*!*/
+            /*transform: scale(5);!*括号中参数为放大缩小倍数 1为原始大小，小于1为缩小，大于一为放大*!*/
+            /*transform: skew(-30deg,-30deg);!*错误：第一个参数为x坐标轴偏移角度，第二个参数为y轴偏移角度，为正数时为顺时针偏移，为负数时逆时针偏移*/
+                                     /*正确：为正数时为逆时针偏移，为负数时是顺时针偏移*!*/
+            transform: rotate(60deg) translate(1000px,100px);/*多个动作同时使用*/
+        }
+    </style>
+</head>
+<body>
+    <div class="demo"></div>
+    <div class="demo"></div>
+    <div class="demo"></div>
+    <div class="demo"></div>
+</body>
+</html>
