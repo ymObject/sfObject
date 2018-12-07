@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .clock{
+            width:300px;
+            height:300px;
+            border: 10px solid #ccc;
+            border-radius:50%;
+            margin:0 auto;
+            position:relative;
+        }
+        .line1,.lin4{
+            width:10px;
+        }
+        .line{
+            height:100%;
+            width:8px;
+            background: #ccc;
+            position:absolute;
+            left:50%;
+            top:0;
+            transform:translate(-50%,0);
+        }
+        .line2{
+            transform:translate(-50%,0) rotate(30deg);
+        }
+        .line3{
+            transform:translate(-50%,0) rotate(60deg);
+        }
+        .line4{
+            transform:translate(-50%,0) rotate(90deg);
+        }
+        .line5{
+            transform:translate(-50%,0) rotate(120deg);
+        }
+        .line6{
+            transform:translate(-50%,0) rotate(150deg);
+        }
+        .cover,.center{
+            position:absolute;
+            left:50%;
+            top:50%;
+            border-radius:50%;
+            transform:translate(-50%,-50%);
+        }
+        .cover{
+            width:280px;
+            height:280px;
+            background:#fff;
+        }
+        .hour,.minute,.second{
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-100%);
+            transform-origin:center bottom;
+        }
+        .hour{
+            width:8px;
+            height:80px;
+            background:red;
+            animation:clockAnimation 43200s infinite steps(60);
+        }
+        .minute{
+            width:4px;
+            height:90px;
+            background:green;
+            animation:clockAnimation 3600s infinite steps(60);
+         }
+        .second{
+            width:1px;
+            height:100px;
+            background:blue;
+            animation:clockAnimation 60s infinite steps(60);
+        }
+        .center{
+            width:20px;
+            height:20px;
+            background:#ccc;
+        }
+        @keyframes clockAnimation{
+            from{
+                transform:translate(-50%,-100%) rotate(0deg);
+            }
+            to{
+                transform:translate(-50%,-100%) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+        <div class="line line4"></div>
+        <div class="line line5"></div>
+        <div class="line line6"></div>
+        <div class="cover"></div>
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+        <div class="center"></div>
+    </div>
+</body>
+</html>

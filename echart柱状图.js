@@ -1,3 +1,6 @@
+//定义y轴最大值、最小值
+var yAxisMax = 1;
+var yAxisMin = 1;
 var itemStyle = {
     normal: {
     },
@@ -50,8 +53,20 @@ option = {
         {
             type : 'value',
             name:'占净资产（%）',
-            min: 0,
-            max: 250,
+
+            max: function(value) {
+                yAxisMax = value.max;
+                return (value.max).toFixed(4);
+            },
+            min: function(value) {
+                if(value.min < 0){
+                    yAxisMin = value.min;
+                    return (value.min).toFixed(4);
+                }else {
+                    yAxisMin = 0;
+                    return 0;
+                }
+            },
             axisLine:{//坐标轴轴的样式（不包括lable展示字段）
                 show:false
             },
@@ -69,8 +84,13 @@ option = {
         {
             type : 'value',
             name:'市值（万元）',
-            min: 0,
-            max: 25,
+            max: function(value) {
+                // return (value.max * 1.2).toFixed(4);
+                // return ((value.min * yAxisMax)/yAxisMin).toFixed(4);
+            },
+            min: function(value) { //y轴左右两边0刻度对齐 比例一致
+                return ((value.max * yAxisMin)/yAxisMax).toFixed(4);
+            },
             axisLine:{//坐标轴轴的样式（不包括lable展示字段）
                 show:false
             },
@@ -89,14 +109,14 @@ option = {
         {
             name:'蒸发量',
             type:'bar',
-            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+            data:[2.0, 4.9, 7.0, 23.2, -25.6, -76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
             itemStyle:itemStyle
         },
         {
             name:'降水量',
             type:'bar',
             yAxisIndex: 1,//设置左右的项（尝试左右y轴的lable都展示时使用，有待进一步处理）
-            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+            data:[-0.0026, -0.59, -0.0000009, -0.000264, -0.098, -0.89, -0.6, -0.1822, 48.7, 18.8, 6.0, 2.3],
             itemStyle:itemStyle//鼠标悬浮后显示阴影
         }
     ]
